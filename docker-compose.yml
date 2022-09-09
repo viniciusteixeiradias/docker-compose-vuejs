@@ -1,0 +1,22 @@
+version: "3"
+services:
+  customer:
+    build:
+      context: ./customer
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    container_name: vuejs-docker-customer
+    volumes:
+      - ./customer:/usr/src/app/customer
+      - /usr/src/app/customer/node_modules
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    container_name: vuejs-docker-admin
+    volumes:
+      - ./admin:/usr/src/app/admin
+      - /usr/src/app/admin/node_modules
